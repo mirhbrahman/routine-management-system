@@ -25,9 +25,10 @@
     <!-- <link rel="stylesheet" href="admin/css/bootstrap-select.less')}}"> -->
     <link rel="stylesheet" href="{{asset('admin/scss/style.css')}}">
     <link href="{{asset('admin/css/lib/vector-map/jqvmap.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('admin/css/lib/datatable/dataTables.bootstrap.min.css')}}">
 
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'> @yield('styles')
+    <link rel="stylesheet" type="text/css" id="theme" href="{{asset('css/toastr.min.css')}}" />
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
 </head>
@@ -38,77 +39,7 @@
     <!-- Left Panel -->
 
     <aside id="left-panel" class="left-panel">
-        <nav class="navbar navbar-expand-sm navbar-default">
-
-            <div class="navbar-header">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand" href="./"><img src="{{asset('admin/img/default.png')}}" alt="Logo"></a>
-                <a class="navbar-brand hidden" href="./"><img src="{{asset('admin/img/default.png')}}" alt="Logo"></a>
-            </div>
-
-            <div id="main-menu" class="main-menu collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
-                    </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Components</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-puzzle-piece"></i><a href="ui-buttons.html">Buttons</a></li>
-                            <li><i class="fa fa-id-badge"></i><a href="ui-badges.html">Badges</a></li>
-                            <li><i class="fa fa-bars"></i><a href="ui-tabs.html">Tabs</a></li>
-                            <li><i class="fa fa-share-square-o"></i><a href="ui-social-buttons.html">Social Buttons</a></li>
-                            <li><i class="fa fa-id-card-o"></i><a href="ui-cards.html">Cards</a></li>
-                            <li><i class="fa fa-exclamation-triangle"></i><a href="ui-alerts.html">Alerts</a></li>
-                            <li><i class="fa fa-spinner"></i><a href="ui-progressbar.html">Progress Bars</a></li>
-                            <li><i class="fa fa-fire"></i><a href="ui-modals.html">Modals</a></li>
-                            <li><i class="fa fa-book"></i><a href="ui-switches.html">Switches</a></li>
-                            <li><i class="fa fa-th"></i><a href="ui-grids.html">Grids</a></li>
-                            <li><i class="fa fa-file-word-o"></i><a href="ui-typgraphy.html">Typography</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tables</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li>
-                            <li><i class="fa fa-table"></i><a href="tables-data.html">Data Table</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Forms</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-th"></i><a href="forms-basic.html">Basic Form</a></li>
-                            <li><i class="menu-icon fa fa-th"></i><a href="forms-advanced.html">Advanced Form</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="widgets.html"> <i class="menu-icon ti-email"></i>Widgets </a>
-                    </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bar-chart"></i>Charts</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-line-chart"></i><a href="charts-chartjs.html">Chart JS</a></li>
-                            <li><i class="menu-icon fa fa-area-chart"></i><a href="charts-flot.html">Flot Chart</a></li>
-                            <li><i class="menu-icon fa fa-pie-chart"></i><a href="charts-peity.html">Peity Chart</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-area-chart"></i>Maps</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-map-o"></i><a href="maps-gmap.html">Google Maps</a></li>
-                            <li><i class="menu-icon fa fa-street-view"></i><a href="maps-vector.html">Vector Maps</a></li>
-                        </ul>
-                    </li>
-
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </nav>
+    @include('partials.admin.navbar')
     </aside>
     <!-- /#left-panel -->
 
@@ -143,8 +74,11 @@
                             <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
 
                             <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
+                            <form  id="logout-form" action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-danger btn-sm">Logout</button>
+                            </form>
 
-                            <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
                         </div>
                     </div>
 
@@ -155,7 +89,8 @@
         <!-- /header -->
         <!-- Header-->
 
-        {{-- <div class="breadcrumbs">
+        {{--
+        <div class="breadcrumbs">
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
@@ -174,8 +109,7 @@
             </div>
         </div> --}}
 
-        <div class="content mt-3">
-
+        <div class="content">
 
             @yield('content')
 
@@ -192,13 +126,48 @@
     <script src="{{asset('admin/js/main.js')}}"></script>
 
 
-    {{-- <script src="{{asset('admin/js/lib/chart-js/Chart.bundle.js')}}"></script> --}}
+    {{--
+    <script src="{{asset('admin/js/lib/chart-js/Chart.bundle.js')}}"></script> --}}
     <script src="{{asset('admin/js/dashboard.js')}}"></script>
-    {{-- <script src="{{asset('admin/js/widgets.js')}}"></script> --}}
+    {{--
+    <script src="{{asset('admin/js/widgets.js')}}"></script> --}}
     <script src="{{asset('admin/js/lib/vector-map/jquery.vmap.js')}}"></script>
     <script src="{{asset('admin/js/lib/vector-map/jquery.vmap.min.js')}}"></script>
     <script src="{{asset('admin/js/lib/vector-map/jquery.vmap.sampledata.js')}}"></script>
     <script src="{{asset('admin/js/lib/vector-map/country/jquery.vmap.world.js')}}"></script>
+
+
+
+    <script src="{{asset('admin/js/lib/data-table/datatables.min.js')}}"></script>
+    <script src="{{asset('admin/js/lib/data-table/dataTables.bootstrap.min.js')}}"></script>
+    <script src="{{asset('admin/js/lib/data-table/dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('admin/js/lib/data-table/buttons.bootstrap.min.js')}}"></script>
+    <script src="{{asset('admin/js/lib/data-table/jszip.min.js')}}"></script>
+    <script src="{{asset('admin/js/lib/data-table/pdfmake.min.js')}}"></script>
+    <script src="{{asset('admin/js/lib/data-table/vfs_fonts.js')}}"></script>
+    <script src="{{asset('admin/js/lib/data-table/buttons.html5.min.js')}}"></script>
+    <script src="{{asset('admin/js/lib/data-table/buttons.print.min.js')}}"></script>
+    <script src="{{asset('admin/js/lib/data-table/buttons.colVis.min.js')}}"></script>
+    <script src="{{asset('admin/js/lib/data-table/datatables-init.js')}}"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+          $('#bootstrap-data-table-export').DataTable();
+        } );
+    </script>
+
+    <script type="text/javascript" src="{{asset('js/toastr.min.js')}}"></script>
+    <script type="text/javascript">
+        @if (Session::has('success'))
+            toastr.success("{{Session::get('success')}}")
+        @endif
+        @if (Session::has('info'))
+            toastr.info("{{Session::get('info')}}")
+        @endif
+    </script>
+
+    @yield('scripts')
 
 </body>
 
