@@ -106,8 +106,8 @@ class CoursesController extends Controller
      */
     public function destroy(Request $request, Course $course)
     {
-      $course->delete();
-      $request->session()->flash('success', 'Course delete successfull');
-      return redirect()->route('courses.index');
+        $course->delete();
+        $request->session()->flash('success', 'Course delete successfull');
+        return redirect()->route('courses.index');
     }
 }
