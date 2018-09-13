@@ -20,6 +20,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
-    Route::resource('users', 'Admin\UsersController')->except(['destroy', 'show']);
-    Route::get('users/delete/{user}', 'Admin\UsersController@destroy')->name('users.destroy');
+    // User
+    Route::resource('users', 'Admin\User\UsersController')->except(['destroy', 'show']);
+    Route::get('users/delete/{user}', 'Admin\User\UsersController@destroy')->name('users.destroy');
+    // Course
+    Route::resource('courses', 'Admin\Course\CoursesController')->except(['show','destroy']);
+    Route::get('courses/delete/{course}', 'Admin\Course\CoursesController@destroy')->name('courses.destroy');
 });
