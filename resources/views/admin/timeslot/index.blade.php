@@ -38,7 +38,13 @@
                 <tr>
                   <td>{{$ts->start}}</td>
                   <td>{{$ts->end}}</td>
-                  <td>{{$ts->lunch ? 'Lunch' : 'Class'}}</td>
+                  <td>
+                    @if ($ts->lunch)
+                      <span class="badge badge-warning">Lunch</span>
+                      @else
+                        <span class="badge badge-primary">Class</span>
+                    @endif
+                  </td>
                   <td>
                     <a class="btn btn-sm btn-outline-primary" href="{{route('timeslots.edit', $ts->id)}}"><i class="fa fa-edit"></i>Edit</a>
                     <a class="btn btn-sm btn-outline-danger" href="{{route('timeslots.destroy', $ts->id)}}" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fa fa-trash"></i>Delete</a>

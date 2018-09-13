@@ -23,6 +23,9 @@
     <li class="">
       <a href="{{ route('timeslots.index') }}"> <i class="menu-icon fa fa-clock-o"></i>Time Slot </a>
     </li>
+    <li class="">
+      <a href="{{ route('rooms.index') }}"> <i class="menu-icon fa fa-home"></i>Rooms </a>
+    </li>
     <li class="menu-item-has-children dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Components</a>
       <ul class="sub-menu children dropdown-menu">

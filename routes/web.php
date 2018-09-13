@@ -29,4 +29,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     // TimeSlot
     Route::resource('timeslots', 'Admin\TimeSlot\TimeSlotsController')->except(['show','destroy']);
     Route::get('timeslots/delete/{timeslot}', 'Admin\TimeSlot\TimeSlotsController@destroy')->name('timeslots.destroy');
+    // Room
+    Route::resource('rooms', 'Admin\Room\RoomsController')->except(['show', 'destroy']);
+    Route::get('rooms/delete/{room}', 'Admin\Room\RoomsController@destroy')->name('rooms.destroy');
 });
