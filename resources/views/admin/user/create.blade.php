@@ -15,6 +15,12 @@
             <div class="col-12 col-md-9"><input type="text" id="text-input" name="name" value="{{old('name')}}" class="form-control"></div>
           </div>
           <div class="row form-group">
+            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Sort from of name</label></div>
+            <div class="col-12 col-md-9">
+              <input type="text" id="text-input" name="sort_name" value="{{old('sort_name')}}" class="form-control">
+            </div>
+          </div>
+          <div class="row form-group">
             <div class="col col-md-3"><label for="email-input" class=" form-control-label">Email</label></div>
             <div class="col-12 col-md-9"><input type="email" id="email-input" name="email"value="{{old('email')}}" class="form-control">
 
