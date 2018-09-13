@@ -26,4 +26,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     // Course
     Route::resource('courses', 'Admin\Course\CoursesController')->except(['show','destroy']);
     Route::get('courses/delete/{course}', 'Admin\Course\CoursesController@destroy')->name('courses.destroy');
+    // TimeSlot
+    Route::resource('timeslots', 'Admin\TimeSlot\TimeSlotsController')->except(['show','destroy']);
+    Route::get('timeslots/delete/{timeslot}', 'Admin\TimeSlot\TimeSlotsController@destroy')->name('timeslots.destroy');
 });

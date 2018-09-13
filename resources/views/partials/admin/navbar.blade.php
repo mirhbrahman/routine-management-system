@@ -5,8 +5,8 @@
     aria-label="Toggle navigation">
     <i class="fa fa-bars"></i>
   </button>
-  <a class="navbar-brand" href="./"><img src="{{asset('admin/img/default.png')}}" alt="Logo"></a>
-  <a class="navbar-brand hidden" href="./"><img src="{{asset('admin/img/default.png')}}" alt="Logo"></a>
+  <a class="navbar-brand" href="./"><img src="{{asset('admin/imgs/default.png')}}" alt="Logo"></a>
+  <a class="navbar-brand hidden" href="./"><img src="{{asset('admin/imgs/default.png')}}" alt="Logo"></a>
 </div>
 
 <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -19,6 +19,9 @@
     </li>
     <li class="">
       <a href="{{ route('courses.index') }}"> <i class="menu-icon fa fa-th"></i>Courses </a>
+    </li>
+    <li class="">
+      <a href="{{ route('timeslots.index') }}"> <i class="menu-icon fa fa-clock-o"></i>Time Slot </a>
     </li>
     <li class="menu-item-has-children dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Components</a>
