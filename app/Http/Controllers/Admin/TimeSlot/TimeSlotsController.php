@@ -16,7 +16,7 @@ class TimeSlotsController extends Controller
     public function index()
     {
       return view('admin.timeslot.index')
-        ->with('timeslots', TimeSlot::all());
+        ->with('timeslots', TimeSlot::orderBy('id', 'ASC')->get());
     }
 
     /**

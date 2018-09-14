@@ -22,12 +22,17 @@ class TeacherAssignsController extends Controller
            ->with('ats', $ats);
      }
 
-     public function getBySem($sem = 0)
+     public function getBySem(Request $request, $sem = 0)
      {
-         $ats = TeacherAssign::with('course')
-           ->with('teacher')
-           ->where('semester', $sem)
-           ->get();
+       $ats = TeacherAssign::with('course')
+         ->with('teacher')
+         ->where('semester', $sem)
+         ->get();
+
+        if ($request->ajax()) {
+          return $ats;
+        }
+
          return view('admin.teacherAssign.index')
            ->with('ats', $ats);
      }

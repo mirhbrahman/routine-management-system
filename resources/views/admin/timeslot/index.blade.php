@@ -24,7 +24,7 @@
 
       <div class="card-body">
         @if ($timeslots)
-          <table id="bootstrap-data-table" class="table table-striped table-bordered">
+          <table  class="table table-striped table-bordered">
             <thead>
               <tr>
                 <th>Start</th>
