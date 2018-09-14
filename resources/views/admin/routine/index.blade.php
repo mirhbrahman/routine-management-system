@@ -26,14 +26,26 @@
               <tr>
                 <td rowspan="9" id="day" data-dayid="1" data-dayvalue="SAT">SAT</td>
               </tr>
-
+              @php
+              $isLunch = false;
+              @endphp
               @foreach (semesters() as $sem)
                 <tr>
                   <td><b>S{{$sem}}</b></td>
-                  @foreach ($timeslots as $ts)
 
+                  @foreach ($timeslots as $ts)
                     @if ($ts->lunch)
-                      <td style="background:silver;text-align:center">Lunch</td>
+                      @php
+                        $isLunch = true;
+                      @endphp
+
+                      @if ($isLunch && $sem==4)
+                        <td style="background:silver;text-align:center"><b>Lunch</b></td>
+                        @else
+                          <td style="background:silver;text-align:center"></td>
+                      @endif
+
+
                     @else
                       <td>
                         <p type="button"
