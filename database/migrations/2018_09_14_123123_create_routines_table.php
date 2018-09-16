@@ -22,7 +22,7 @@ class CreateRoutinesTable extends Migration
             $table->integer('time_slot_id');
             $table->integer('teacher_id');
             $table->integer('teacher_assign_id')->default(0);
-            $table->string('note');
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }

@@ -34,6 +34,7 @@
                   <td><b>S{{$sem}}</b></td>
 
                   @foreach ($timeslots as $ts)
+
                     @if ($ts->lunch)
                       @php
                         $isLunch = true;
@@ -44,22 +45,32 @@
                         @else
                           <td style="background:silver;text-align:center"></td>
                       @endif
-
-
                     @else
-                      <td>
+                      <td style="padding:5px">
+                        @if ($routines)
+                          @foreach ($routines as $r)
+                            @if ($sem == $r->semester && $ts->id == $r->time_slot_id)
+                              <div class="" style="color:black; ">
+                                <p style="color:black;font-size:12px;line-height:0px;margin-top: 5px;">{{$r->course->code}}</p>
+                                <p style="color:black;font-size:12px;line-height:0px;">T-{{$r->teacher->sort_name}}, R-{{$r->room->room_no}}</p>
+                                {{-- <p style="color:black;font-size:12px;line-height:0px;"></p> --}}
+                              </div>
+                            @endif
+                          @endforeach
+                        @endif
                         <p type="button"
                         id="addBtnId{{str_random(20)}}"
                         data-sem="{{$sem}}"
                         data-slot="{{$ts->id}}"
                         data-timeslot="{{$ts->start}}-{{$ts->end}}"
-                        style="margin:0px;display:none"
+                        style="margin:0px;display:none;padding:1px"
                         class="addBtn btn btn-info btn-sm"
                         data-toggle="modal"
                         data-target="#mediumModal">
                         <i class="fa fa-plus"></i>Add
                       </p>
                     </td>
+
                   @endif
 
 
@@ -123,7 +134,7 @@
                     <label for="text-input" class=" form-control-label">Course</label>
                   </div>
                   <div class="col-12 col-md-9">
-                    <select class="form-control" name="course_id" id="course" required>
+                    <select class="form-control" name="course_teacher_id" id="course" required>
                       <option value="">Please Select</option>
                     </select>
                   </div>
@@ -141,9 +152,17 @@
                         @foreach ($rooms as $room)
                           <option value="{{$room->id}}">{{$room->room_no}}</option>
                         @endforeach
-
                       @endif
                     </select>
+                  </div>
+                </div>
+
+                <div class="row form-group">
+                  <div class="col col-md-3">
+                    <label for="text-input" class="form-control-label">Note</label>
+                  </div>
+                  <div class="col-12 col-md-9">
+                    <input class="form-control" id="note" type="text" name="note">
                   </div>
                 </div>
 
@@ -189,7 +208,7 @@
               $.each(data, function(key, value) {
                 $('#course')
                 .append($("<option></option>")
-                .attr("value",value.course.id)
+                .attr("value",value.course.id +'-'+ value.teacher.id)
                 .text(value.course.name +'-'+ value.teacher.name));
               });
             }

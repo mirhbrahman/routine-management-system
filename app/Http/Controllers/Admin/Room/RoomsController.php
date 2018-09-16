@@ -47,7 +47,7 @@ class RoomsController extends Controller
       if ($room->save()) {
           $request->session()->flash('success', 'Room create successful');
       }
-      return redirect()->route('rooms.index');
+      return redirect()->back();
     }
 
     /**

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin\Routine;
 
+use Session;
 use App\Models\Room;
+use App\Models\Routine;
 use App\Models\TimeSlot;
+use App\Models\TeacherAssign;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,9 +19,13 @@ class RoutineController extends Controller
      */
     public function index()
     {
+      $day_id = 1;
+      $routines = Routine::where('day', $day_id)->get();
+      //return $routines;
         return view('admin.routine.index')
           ->with('timeslots', TimeSlot::orderBy('id', 'ASC')->get())
-          ->with('rooms', Room::orderBy('id', 'ASC')->get());
+          ->with('rooms', Room::orderBy('id', 'ASC')->get())
+          ->with('routines', $routines);
     }
 
     /**
@@ -39,7 +46,20 @@ class RoutineController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
+        $course_teacher_id = explode('-', $request->course_teacher_id);
+        $routine = new Routine();
+        $routine->day = $request->day_id;
+        $routine->semester = $request->semester;
+        $routine->course_id = $course_teacher_id[0];
+        $routine->teacher_id = $course_teacher_id[1];
+        $routine->room_id = $request->room_id;
+        $routine->time_slot_id = $request->time_slot_id;
+        $routine->note = $request->note;
+
+        if ($routine->save()) {
+          Session::flash('success', 'Added to routine');
+        }
+        return redirect()->back();
     }
 
     /**

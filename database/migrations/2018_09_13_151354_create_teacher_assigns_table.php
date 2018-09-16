@@ -15,10 +15,13 @@ class CreateTeacherAssignsTable extends Migration
     {
         Schema::create('teacher_assigns', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('semester');
-            $table->integer('course_id');
-            $table->integer('teacher_id');
+            $table->integer('semester')->default(0);
+            $table->integer('course_id')->unsigned();
+            $table->integer('teacher_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+            $table->foreign('teacher_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
