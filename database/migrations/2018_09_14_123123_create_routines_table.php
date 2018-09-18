@@ -15,7 +15,7 @@ class CreateRoutinesTable extends Migration
     {
         Schema::create('routines', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('day');
+            $table->integer('day_id');
             $table->integer('semester');
             $table->integer('course_id');
             $table->integer('room_id');

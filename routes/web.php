@@ -37,5 +37,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('teacher-assign/delete/{teacherAssign}', 'Admin\TeacherAssign\TeacherAssignsController@destroy')->name('teacher-assigns.destroy');
     Route::get('teacher-assign/sem/{sem}', 'Admin\TeacherAssign\TeacherAssignsController@getBySem')->name('teacher-assigns.getBySem');
     // Routine
-    Route::resource('routine', 'Admin\Routine\RoutineController')->except(['show']);
+    Route::resource('routine', 'Admin\Routine\RoutineController')->except(['show', 'update','show','destroy']);
+    Route::post('routine-u/update', 'Admin\Routine\RoutineController@update')->name('routine.update');
+    Route::get('routine/delete/{id}', 'Admin\Routine\RoutineController@destroy')->name('routine.destroy');
 });
