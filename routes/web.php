@@ -41,3 +41,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::post('routine-u/update', 'Admin\Routine\RoutineController@update')->name('routine.update');
     Route::get('routine/delete/{id}', 'Admin\Routine\RoutineController@destroy')->name('routine.destroy');
 });
+
+
+Route::group(['prefix' => 'teacher', 'middleware' => ['auth']], function () {
+    // Routine
+    Route::get('routine', 'Teacher\Routine\RoutineController@index')->name('teacher.routine.index');
+});
