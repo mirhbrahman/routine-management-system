@@ -30,6 +30,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     // Room
     Route::resource('rooms', 'Admin\Room\RoomsController')->except(['show', 'destroy']);
     Route::get('rooms/delete/{room}', 'Admin\Room\RoomsController@destroy')->name('rooms.destroy');
+    // Session
+    Route::resource('session', 'Admin\Session\SessionController')->except(['show','edit', 'create', 'destroy']);
     // Teacher Assign
     Route::resource('teacher-assigns', 'Admin\TeacherAssign\TeacherAssignsController')->except(['show', 'destroy']);
     Route::get('teacher-assign/delete/{teacherAssign}', 'Admin\TeacherAssign\TeacherAssignsController@destroy')->name('teacher-assigns.destroy');

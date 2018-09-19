@@ -27,6 +27,9 @@
       <a href="{{ route('rooms.index') }}"> <i class="menu-icon fa fa-home"></i>Rooms </a>
     </li>
     <li class="">
+      <a href="{{ route('session.index') }}"> <i class="menu-icon fa fa-clock-o"></i>Session </a>
+    </li>
+    <li class="">
       <a href="{{ route('teacher-assigns.index') }}"> <i class="menu-icon fa fa fa-address-book"></i>Teacher Assign </a>
     </li>
     <li class="">

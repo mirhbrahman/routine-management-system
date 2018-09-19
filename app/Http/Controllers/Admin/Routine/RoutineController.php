@@ -9,6 +9,7 @@ use App\Models\TimeSlot;
 use App\Models\TeacherAssign;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Session as ClassSession;
 
 class RoutineController extends Controller
 {
@@ -28,7 +29,8 @@ class RoutineController extends Controller
           ->with('timeslots', TimeSlot::orderBy('id', 'ASC')->get())
           ->with('rooms', Room::orderBy('id', 'ASC')->get())
           ->with('routines', $routines)
-          ->with('day_id', $day_id);
+          ->with('day_id', $day_id)
+          ->with('session', ClassSession::first());
     }
 
     /**
