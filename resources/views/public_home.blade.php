@@ -88,6 +88,7 @@
                 @endforeach
               </tbody>
             </table>
+            <a href="{{route('pdf.public_routine.index', ['semester' => $semester])}}" style="float:right" class="btn btn-sm btn-info pull-right">Download</a>
           </div>
         @else
           <div class="col-sm-6 offset-sm-3">

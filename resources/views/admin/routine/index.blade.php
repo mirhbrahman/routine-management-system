@@ -141,6 +141,8 @@
           @endforeach
         </tbody>
       </table>
+
+      <a href="{{route('pdf.full_routine.index', ['day_id' => $day_id])}}" class="btn btn-sm btn-info pull-right">Download</a>
     </div>
 
 

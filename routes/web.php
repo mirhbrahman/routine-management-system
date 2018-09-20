@@ -40,10 +40,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('routine', 'Admin\Routine\RoutineController')->except(['show', 'update','show','destroy']);
     Route::post('routine-u/update', 'Admin\Routine\RoutineController@update')->name('routine.update');
     Route::get('routine/delete/{id}', 'Admin\Routine\RoutineController@destroy')->name('routine.destroy');
+    // Routine PDF download
+    Route::get('routine-apdf/admin/download', 'Admin\PDF\PDFRoutineController@index')->name('pdf.full_routine.index');
 });
 
 
 Route::group(['prefix' => 'teacher', 'middleware' => ['auth']], function () {
     // Routine
     Route::get('routine', 'Teacher\Routine\RoutineController@index')->name('teacher.routine.index');
+    // Routine PDF download
+    Route::get('routine-tpdf/teacher/download', 'Teacher\PDF\PDFRoutineController@index')->name('pdf.teacher_routine.index');
 });
+// Public Routine PDF download
+Route::get('routine-ppdf/sem/download', 'PublicRoutine\PDF\PDFRoutineController@index')->name('pdf.public_routine.index');

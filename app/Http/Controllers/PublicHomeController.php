@@ -16,6 +16,7 @@ class PublicHomeController extends Controller
       $routines = Routine::where('semester', $sem)->get();
       return view('public_home')
         ->with('timeslots', TimeSlot::orderBy('id', 'ASC')->get())
-        ->with('routines', $routines);
+        ->with('routines', $routines)
+        ->with('semester', $sem);
     }
 }
