@@ -5,14 +5,15 @@
     aria-label="Toggle navigation">
     <i class="fa fa-bars"></i>
   </button>
-  <a class="navbar-brand" href="./"><img src="{{asset('admin/imgs/default.png')}}" alt="Logo"></a>
-  <a class="navbar-brand hidden" href="./"><img src="{{asset('admin/imgs/default.png')}}" alt="Logo"></a>
+  {{-- <a class="navbar-brand" href="./"><img src="{{asset('admin/imgs/default.png')}}" alt="Logo"></a>
+  <a class="navbar-brand hidden" href="./"><img src="{{asset('admin/imgs/default.png')}}" alt="Logo"></a> --}}
+  <p class="navbar-brand">{{Auth::user()->name}}</p>
 </div>
 
 <div id="main-menu" class="main-menu collapse navbar-collapse">
   <ul class="nav navbar-nav">
     <li class="active">
-      <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+      <a href="{{ route('home') }}"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
     </li>
     <li class="">
       <a href="{{ route('users.index') }}"> <i class="menu-icon fa fa-user"></i>Users </a>

@@ -44,6 +44,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('routine-apdf/admin/download', 'Admin\PDF\PDFRoutineController@index')->name('pdf.full_routine.index');
 });
 
+Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
+    // Profile
+    Route::get('profile', 'User\ProfileController@edit')->name('user.profile.edit');
+    Route::put('profile', 'User\ProfileController@update')->name('user.profile.update');
+});
 
 Route::group(['prefix' => 'teacher', 'middleware' => ['auth']], function () {
     // Routine
