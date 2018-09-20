@@ -5,7 +5,7 @@
     <form action="{{route('public.home')}}" method="get" enctype="" class="form-horizontal">
       <div class="row form-group">
         <div class="col col-md-2">
-          <h4 style="margin-top:5px;">Semester</h4>
+          <h4 style="margin-top:5px;color:#FFFFFF">Semester</h4>
         </div>
         <div class="col-12 col-md-6">
           <select name="semester" id="semester" class="form-control pull-left">
@@ -100,11 +100,18 @@
               </tbody>
             </table>
             <a href="{{route('pdf.public_routine.index', ['semester' => $semester])}}" style="float:right" class="btn btn-sm btn-info pull-right">Download</a>
-            <div class="col-sm-6">
+
+            @if ($teachers)
               <div class="col-sm-6">
-                ddd
+                <div class="row">
+                  @foreach ($teachers as $t)
+                    <div class="col-sm-4">
+                      <p style="margin-bottom:0">{{$t->sort_name}} : {{$t->name}}</p>
+                    </div>
+                  @endforeach
+                </div>
               </div>
-            </div>
+            @endif
 
           </div>
         @else

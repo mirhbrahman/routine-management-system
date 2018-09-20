@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Models\Routine;
 use App\Models\TimeSlot;
 use Illuminate\Http\Request;
@@ -19,6 +20,7 @@ class PublicHomeController extends Controller
         ->with('timeslots', TimeSlot::orderBy('id', 'ASC')->get())
         ->with('routines', $routines)
         ->with('semester', $sem)
-        ->with('session', ClassSession::first());
+        ->with('session', ClassSession::first())
+        ->with('teachers', User::where('is_teacher', 1)->get());
     }
 }

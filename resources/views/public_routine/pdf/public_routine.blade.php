@@ -84,6 +84,17 @@
               @endforeach
             </tbody>
           </table>
+          @if ($teachers)
+            <div class=""  style="width:100%;">
+              <div class="row" style="padding:15px;">
+                @foreach ($teachers as $t)
+                  <div class=""  style="width:25%;float:left">
+                    <p style="margin-bottom:0">{{$t->sort_name}} : {{$t->name}}</p>
+                  </div>
+                @endforeach
+              </div>
+            </div>
+          @endif
         </div>
       @endif
     </div>

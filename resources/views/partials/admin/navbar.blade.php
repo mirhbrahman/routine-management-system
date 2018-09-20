@@ -38,9 +38,12 @@
         <a href="{{ route('routine.index') }}"> <i class="menu-icon fa fa fa-calendar"></i>Make Routine </a>
       </li>
     @endif
-    <li class="">
-      <a href="{{ route('teacher.routine.index') }}"> <i class="menu-icon fa fa fa-calendar"></i>Your Routine </a>
-    </li>
+
+    @if (Auth::user()->isTeacher())
+      <li class="">
+        <a href="{{ route('teacher.routine.index') }}"> <i class="menu-icon fa fa fa-calendar"></i>Your Routine </a>
+      </li>
+    @endif
 
 
 
