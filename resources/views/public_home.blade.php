@@ -28,7 +28,18 @@
         <div class="card-header">Routine</div>
 
         <div class="card-body">
-
+          <h4 style="text-align:center;">Department of Computer Science & Engineering</h4>
+          <p style="text-align:center;font-weight:bold;margin-bottom:0">
+            Class Routine –
+            @if ($session->session)
+              {{$session->session}}
+            @else
+              <p>(No session)</p>
+            @endif
+          </p>
+          <p style="text-align:center;font-weight:bold">
+            Semester – {{$semester}}
+          </p>
           <table class="table table-bordered" style="font-size: 12px">
             <thead>
               <tr style="text-align:center">
@@ -89,6 +100,12 @@
               </tbody>
             </table>
             <a href="{{route('pdf.public_routine.index', ['semester' => $semester])}}" style="float:right" class="btn btn-sm btn-info pull-right">Download</a>
+            <div class="col-sm-6">
+              <div class="col-sm-6">
+                ddd
+              </div>
+            </div>
+
           </div>
         @else
           <div class="col-sm-6 offset-sm-3">

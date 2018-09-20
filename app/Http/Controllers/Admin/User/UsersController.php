@@ -51,6 +51,7 @@ class UsersController extends Controller
         $user->sort_name = strtoupper($request->sort_name);
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
+        $user->is_teacher = $request->is_teacher ? 1 : 0;
         $user->is_active = $request->is_active ? 1 : 0;
         $user->is_admin = $request->is_admin ? 1 : 0;
 
@@ -104,6 +105,7 @@ class UsersController extends Controller
         if($request->password){
             $user->password = bcrypt($request->password);
         }
+        $user->is_teacher = $request->is_teacher ? 1 : 0;
         $user->is_active = $request->is_active ? 1 : 0;
         $user->is_admin = $request->is_admin ? 1 : 0;
 

@@ -46,8 +46,10 @@
                     @endif
                     @if ($user->isAdmin())
                       <span class="badge badge-info">Admin</span>
+                    @elseif ($user->isTeacher())
+                      <span class="badge badge-dark">Teacher</span>
                     @else
-                      <span class="badge badge-dark">Reguler</span>
+                      <span class="badge badge-warning">Reguler</span>
                     @endif
 
                   </td>

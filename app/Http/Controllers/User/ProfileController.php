@@ -12,12 +12,12 @@ class ProfileController extends Controller
     public function edit()
     {
       return view('user.profile.edit')
-        ->with('user', User::find(Auth::user()->id)->first());
+        ->with('user', User::find(Auth::user()->id));
     }
 
     public function update(Request $request)
     {
-      $user = User::find(Auth::user()->id)->first();
+      $user = User::find(Auth::user()->id);
       $this->validate($request, [
           'name' => 'required|min:3|max:50',
           'sort_name' => 'required|min:1|max:10|unique:users,sort_name,' . $user->id,

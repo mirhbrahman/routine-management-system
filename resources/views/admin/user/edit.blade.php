@@ -37,6 +37,16 @@
             </div>
           </div>
 
+          <div class="row form-group">
+            <div class="col col-md-3"><label class=" form-control-label">Is Teacher</label></div>
+            <div class="col col-md-9">
+              <div class="form-check-inline form-check">
+                <label for="checkbox1" class="form-check-label ">
+                  <input type="checkbox" id="is_teacher" name="is_teacher" value="1" class="form-check-input" {{$user->is_teacher ? 'checked': ''}} >
+                </label>
+              </div>
+            </div>
+          </div>
 
           <div class="row form-group">
             <div class="col col-md-3"><label class=" form-control-label">Is Active</label></div>

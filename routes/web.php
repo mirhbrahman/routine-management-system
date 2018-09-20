@@ -17,7 +17,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function () {
     // User
     Route::resource('users', 'Admin\User\UsersController')->except(['destroy', 'show']);
     Route::get('users/delete/{user}', 'Admin\User\UsersController@destroy')->name('users.destroy');

@@ -7,6 +7,16 @@
       <div class="card-header">Routine</div>
 
       <div class="card-body">
+        <h4 style="text-align:center;">Department of Computer Science & Engineering</h4>
+        <p style="text-align:center;font-weight:bold">
+          Class Routine –
+          @if ($session->session)
+            {{$session->session}}
+          @else
+            <p>(No session)</p>
+          @endif
+        </p>
+        
         <p style="color:black; ">Teacher: {{Auth::user()->name}}</p>
         @include('includes.custom_errors')
 

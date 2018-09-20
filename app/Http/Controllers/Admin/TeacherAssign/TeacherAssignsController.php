@@ -45,7 +45,7 @@ class TeacherAssignsController extends Controller
     public function create()
     {
           return view('admin.teacherAssign.create')
-          ->with('teachers', User::orderBy('name', 'ASC')->get())
+          ->with('teachers', User::where('is_teacher', 1)->orderBy('name', 'ASC')->get())
           ->with('courses', Course::orderBy('name', 'ASC')->get());
     }
 

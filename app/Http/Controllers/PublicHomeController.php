@@ -6,6 +6,7 @@ use App\Models\Routine;
 use App\Models\TimeSlot;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Session as ClassSession;
 
 class PublicHomeController extends Controller
 {
@@ -17,6 +18,7 @@ class PublicHomeController extends Controller
       return view('public_home')
         ->with('timeslots', TimeSlot::orderBy('id', 'ASC')->get())
         ->with('routines', $routines)
-        ->with('semester', $sem);
+        ->with('semester', $sem)
+        ->with('session', ClassSession::first());
     }
 }
