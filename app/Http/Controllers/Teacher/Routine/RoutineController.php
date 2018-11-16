@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Teacher\Routine;
 
 use Auth;
+use App\User;
 use App\Models\Routine;
 use App\Models\TimeSlot;
 use App\Http\Controllers\Controller;
@@ -16,6 +17,7 @@ class RoutineController extends Controller
       return view('teacher.routine.index')
         ->with('timeslots', TimeSlot::orderBy('id', 'ASC')->get())
         ->with('session', ClassSession::first())
-        ->with('routines', $routines);
+        ->with('routines', $routines)
+        ->with('teacher', User::where('id', Auth::user()->id)->where('is_teacher', 1)->where('is_active', 1)->first());
     }
 }

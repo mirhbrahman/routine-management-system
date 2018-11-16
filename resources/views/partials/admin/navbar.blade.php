@@ -37,6 +37,9 @@
       <li class="">
         <a href="{{ route('routine.index') }}"> <i class="menu-icon fa fa fa-calendar"></i>Make Routine </a>
       </li>
+      <li class="">
+        <a href="{{ route('admin.teacher_routine.index') }}"> <i class="menu-icon fa fa fa-address-book"></i>Teacher Routine </a>
+      </li>
     @endif
 
     @if (Auth::user()->isTeacher())

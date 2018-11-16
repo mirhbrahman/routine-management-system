@@ -42,6 +42,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function (
     Route::get('routine/delete/{id}', 'Admin\Routine\RoutineController@destroy')->name('routine.destroy');
     // Routine PDF download
     Route::get('routine-apdf/admin/download', 'Admin\PDF\PDFRoutineController@index')->name('pdf.full_routine.index');
+    // Teacher routine
+    Route::get('teacher-routine', 'Admin\TeacherRoutine\TeacherRoutinesController@index')->name('admin.teacher_routine.index');
+    Route::get('teacher-routine/show/{id}', 'Admin\TeacherRoutine\TeacherRoutinesController@show')->name('admin.teacher_routine.show');
 });
 
 Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
@@ -54,7 +57,7 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['auth']], function () {
     // Routine
     Route::get('routine', 'Teacher\Routine\RoutineController@index')->name('teacher.routine.index');
     // Routine PDF download
-    Route::get('routine-tpdf/teacher/download', 'Teacher\PDF\PDFRoutineController@index')->name('pdf.teacher_routine.index');
+    Route::get('routine-tpdf/teacher/download/{id}', 'Teacher\PDF\PDFRoutineController@index')->name('pdf.teacher_routine.index');
 });
 // Public Routine PDF download
 Route::get('routine-ppdf/sem/download', 'PublicRoutine\PDF\PDFRoutineController@index')->name('pdf.public_routine.index');

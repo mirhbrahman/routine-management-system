@@ -1,36 +1,36 @@
-@extends('layouts.pdf')
+@extends('layouts.admin')
 @section('content')
-  <style media="screen">
-  .table-bordered td, .table-bordered th{
-    border: 1px solid black;
-  }
-  table {
-    border-collapse: collapse;
-  }
-</style>
+
   <div class="col-md-12" style="padding:0">
 
     <div class="card">
-    <div class="card-body">
-      <h4 style="text-align:center;">Department of Computer Science & Engineering</h4>
-      <p style="text-align:center;font-weight:bold">
-        Class Routine –
-        @if ($session->session)
-          {{$session->session}}
-        @else
-          <p>(No session)</p>
+      <div class="card-header">Routine</div>
+
+      <div class="card-body">
+        <h4 style="text-align:center;">Department of Computer Science & Engineering</h4>
+        <p style="text-align:center;font-weight:bold">
+          Class Routine –
+          @if ($session->session)
+            {{$session->session}}
+          @else
+            <p>(No session)</p>
+          @endif
+        </p>
+        
+        <p style="color:black; ">Teacher: 
+        @if($teacher)
+          {{$teacher->name}}
         @endif
       </p>
-      
+        @include('includes.custom_errors')
 
-        <p style="color:black; ">Teacher: {{$teacher->name}}</p>
-        <table class="table table-bordered" style="font-size: 12px;color:black">
+        <table class="table table-bordered" style="font-size: 12px">
           <thead>
             <tr style="text-align:center">
-              <th style="border-bottom:1px solid black;">DAY</th>
+              <th>DAY</th>
               @if ($timeslots)
                 @foreach ($timeslots as $ts)
-                  <th style="border-bottom:1px solid black;">
+                  <th>
                     {{$ts->start}}<br>
                     -<br>
                     {{$ts->end}}</th>
@@ -64,9 +64,9 @@
                           @foreach ($routines as $r)
                             @if ($day_id == $r->day_id && $ts->id == $r->time_slot_id)
                               <div class="" style="color:black; ">
-                                <p style="color:black;font-size:12px;margin-bottom:0">S{{$r->semester}}: {{$r->course->code}}</p>
-                                <p style="color:black;font-size:12px;margin-bottom:0">T-{{$r->teacher->short_name}}, R-{{$r->room->room_no}}</p>
-                                <p style="color:black;font-size:12px;margin-bottom:0">@if ($r->note)
+                                <p style="color:black;font-size:12px;line-height:0px;margin-top: 5px;">S{{$r->semester}}: {{$r->course->code}}</p>
+                                <p style="color:black;font-size:12px;line-height:0px;">T-{{$r->teacher->short_name}}, R-{{$r->room->room_no}}</p>
+                                <p style="color:black;font-size:12px;line-height:0px;">@if ($r->note)
                                   ( {{$r->note}} )
                                 @endif</p>
                               </div>
@@ -83,6 +83,7 @@
               @endforeach
             </tbody>
           </table>
-      </div>
+            <a href="{{route('pdf.teacher_routine.index', $teacher->id)}}" class="btn btn-sm btn-info pull-right">Download</a>
+        </div>
 
       @endsection

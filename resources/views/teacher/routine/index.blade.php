@@ -17,7 +17,11 @@
           @endif
         </p>
         
-        <p style="color:black; ">Teacher: {{Auth::user()->name}}</p>
+        <p style="color:black; ">Teacher: 
+        @if($teacher)
+          {{$teacher->name}}
+        @endif
+      </p>
         @include('includes.custom_errors')
 
         <table class="table table-bordered" style="font-size: 12px">
@@ -61,7 +65,7 @@
                             @if ($day_id == $r->day_id && $ts->id == $r->time_slot_id)
                               <div class="" style="color:black; ">
                                 <p style="color:black;font-size:12px;line-height:0px;margin-top: 5px;">S{{$r->semester}}: {{$r->course->code}}</p>
-                                <p style="color:black;font-size:12px;line-height:0px;">T-{{$r->teacher->sort_name}}, R-{{$r->room->room_no}}</p>
+                                <p style="color:black;font-size:12px;line-height:0px;">T-{{$r->teacher->short_name}}, R-{{$r->room->room_no}}</p>
                                 <p style="color:black;font-size:12px;line-height:0px;">@if ($r->note)
                                   ( {{$r->note}} )
                                 @endif</p>
@@ -79,7 +83,7 @@
               @endforeach
             </tbody>
           </table>
-            <a href="{{route('pdf.teacher_routine.index')}}" class="btn btn-sm btn-info pull-right">Download</a>
+            <a href="{{route('pdf.teacher_routine.index', Auth::user()->id)}}" class="btn btn-sm btn-info pull-right">Download</a>
         </div>
 
       @endsection

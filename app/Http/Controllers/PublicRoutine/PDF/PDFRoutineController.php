@@ -8,6 +8,7 @@ use App\User;
 use App\Models\Routine;
 use App\Models\TimeSlot;
 use Illuminate\Http\Request;
+use App\Models\TeacherAssign;
 use App\Http\Controllers\Controller;
 use App\Models\Session as ClassSession;
 
@@ -35,7 +36,7 @@ class PDFRoutineController extends Controller
         'timeslots' => TimeSlot::orderBy('id', 'ASC')->get(),
         'session' => $session,
         'semester' => $sem,
-        'teachers' => User::where('is_teacher', 1)->get()
+        'teachers' => TeacherAssign::where('semester', $sem)->groupBy('teacher_id')->get()
     ];
 
     $pdf = PDF::loadView('public_routine.pdf.public_routine', $data);

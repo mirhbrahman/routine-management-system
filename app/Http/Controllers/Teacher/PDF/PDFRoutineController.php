@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Teacher\PDF;
 
 use PDF;
 use Auth;
+use App\User;
 use App\Models\Routine;
 use App\Models\TimeSlot;
 use App\Http\Controllers\Controller;
@@ -11,9 +12,18 @@ use App\Models\Session as ClassSession;
 
 class PDFRoutineController extends Controller
 {
-  public function index()
+  public function index($teacher_id = 0)
   {
-    $routines = Routine::where('teacher_id', Auth::user()->id)->get();
+    // PDF for admin
+    if ($teacher_id && Auth::user()->is_admin) {
+        $routines = Routine::where('teacher_id', $teacher_id)->get();
+        $teacher = User::where('id', $teacher_id)->first();
+     
+     // PDF for teacher   
+    }else{
+        $routines = Routine::where('teacher_id', Auth::user()->id)->get();
+        $teacher = Auth::user();
+    }
 
     // To preview pdf view uncomment the section
     // return view('teacher.pdf.teacher_routine')
@@ -24,12 +34,13 @@ class PDFRoutineController extends Controller
 
     $session = ClassSession::first();
     $session_for_pdf_name = str_replace(' ', '-', $session->session);
-    $teacher_for_pdf_name = str_replace(' ', '-', trim(Auth::user()->name));
+    $teacher_for_pdf_name = str_replace(' ', '-', trim($teacher->name));
 
     $data = [
         'routines' => $routines,
         'timeslots' => TimeSlot::orderBy('id', 'ASC')->get(),
-        'session' => $session
+        'session' => $session,
+        'teacher' => $teacher
     ];
 
     $pdf = PDF::loadView('teacher.pdf.teacher_routine', $data);

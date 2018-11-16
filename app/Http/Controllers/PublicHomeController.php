@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use App\Models\TeacherAssign;
 use App\Http\Controllers\Controller;
 use App\Models\Session as ClassSession;
-use Illuminate\Support\Facades\DB;
 
 class PublicHomeController extends Controller
 {

@@ -13,7 +13,7 @@
   @if (count($routines))
     <div class="card">
       <div class="card-body">
-        <h4 style="text-align:center;">Department of Computer Science & Engineering</h4>
+        <h4 style="text-align:center;"><b>Department of Computer Science & Engineering</b></h4>
         <p style="text-align:center;font-weight:bold;margin-bottom:0">
           Class Routine –
           @if ($session->session)
@@ -66,7 +66,7 @@
                             @if ($day_id == $r->day_id && $ts->id == $r->time_slot_id)
                               <div class="" style="color:black; ">
                                 <p style="color:black;font-size:12px;margin-bottom:0">S{{$r->semester}}: {{$r->course->code}}</p>
-                                <p style="color:black;font-size:12px;margin-bottom:0">T-{{$r->teacher->sort_name}}, R-{{$r->room->room_no}}</p>
+                                <p style="color:black;font-size:12px;margin-bottom:0">T-{{$r->teacher->short_name}}, R-{{$r->room->room_no}}</p>
                                 <p style="color:black;font-size:12px;margin-bottom:0">@if ($r->note)
                                   ( {{$r->note}} )
                                 @endif</p>
@@ -89,7 +89,7 @@
               <div class="row" style="padding:15px;">
                 @foreach ($teachers as $t)
                   <div class=""  style="width:25%;float:left">
-                    <p style="margin-bottom:0">{{$t->sort_name}} : {{$t->name}}</p>
+                    <p style="margin-bottom:0">{{$t->teacher->short_name}} : {{$t->teacher->name}}</p>
                   </div>
                 @endforeach
               </div>
