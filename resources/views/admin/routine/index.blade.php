@@ -26,12 +26,15 @@
       <div class="card-header">Routine</div>
 
       <div class="card-body">
-        <h4 style="text-align:center;margin-bottom:15px">DEPARTMENT OF CSE, Class Routine, Session
+        <h4 style="text-align:center;">Department of Computer Science & Engineering</h4>
+        <p style="text-align:center;font-weight:bold">
+          Class Routine –
           @if ($session->session)
             {{$session->session}}
           @else
-            <p style="color:red">(Please add session)</p>
+            <p>(No session)</p>
           @endif
+        </p>
         </h4>
         @include('includes.custom_errors')
 
@@ -141,6 +144,17 @@
           @endforeach
         </tbody>
       </table>
+       @if ($teachers)
+            <div class=""  style="width:100%;">
+              <div class="row" style="padding:15px;">
+                @foreach ($teachers as $t)
+                  <div class=""  style="width:25%;float:left">
+                    <p style="margin-bottom:0">{{$t->teacher->short_name}} : {{$t->teacher->name}}</p>
+                  </div>
+                @endforeach
+              </div>
+            </div>
+          @endif
 
       <a href="{{route('pdf.full_routine.index', ['day_id' => $day_id])}}" class="btn btn-sm btn-info pull-right">Download</a>
     </div>

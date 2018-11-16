@@ -11,13 +11,15 @@
 <div class="col-md-12" style="padding:0">
   <div class="card">
     <div class="card-body" id="content">
-      <h4 style="text-align:center;margin-bottom:15px">DEPARTMENT OF CSE, Class Routine, Session
+      <h4 style="text-align:center;">Department of Computer Science & Engineering</h4>
+      <p style="text-align:center;font-weight:bold">
+        Class Routine –
         @if ($session->session)
           {{$session->session}}
         @else
-          <p style="color:red">(Please add session)</p>
+          <p>(No session)</p>
         @endif
-      </h4>
+      </p>
       <table class="table table-bordered" style="font-size: 12px;color:black">
         <thead style="text-align:center">
           <th style="border-bottom:1px solid black;">DAY</th>
@@ -52,7 +54,7 @@
                         @if ($sem == $r->semester && $ts->id == $r->time_slot_id)
                           <div class="" style="color:black;">
                             <p style="color:black;font-size:12px;margin-bottom:0">{{$r->course->code}}</p>
-                            <p style="color:black;font-size:12px;margin-bottom:0">T-{{$r->teacher->sort_name}}, R-{{$r->room->room_no}}</p>
+                            <p style="color:black;font-size:12px;margin-bottom:0">T-{{$r->teacher->short_name}}, R-{{$r->room->room_no}}</p>
                             <p style="color:black;font-size:12px;margin-bottom:0">@if ($r->note)
                               ( {{$r->note}} )
                             @endif</p>

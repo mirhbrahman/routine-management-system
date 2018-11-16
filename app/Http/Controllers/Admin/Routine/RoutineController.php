@@ -30,7 +30,8 @@ class RoutineController extends Controller
           ->with('rooms', Room::orderBy('id', 'ASC')->get())
           ->with('routines', $routines)
           ->with('day_id', $day_id)
-          ->with('session', ClassSession::first());
+          ->with('session', ClassSession::first())
+          ->with('teachers', TeacherAssign::groupBy('teacher_id')->get());
     }
 
     /**
