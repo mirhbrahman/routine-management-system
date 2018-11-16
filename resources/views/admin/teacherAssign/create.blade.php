@@ -49,7 +49,7 @@
                 <option value="">Please select</option>
                 @if ($teachers)
                   @foreach ($teachers as $teacher)
-                    <option value="{{$teacher->id}}">{{$teacher->name}}-{{$teacher->sort_name}}</option>
+                    <option value="{{$teacher->id}}">{{$teacher->name}}-{{$teacher->short_name}}</option>
                   @endforeach
                 @endif
               </select>

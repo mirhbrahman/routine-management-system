@@ -28,6 +28,7 @@
             <thead>
               <tr>
                 <th>Name</th>
+                <th>Short Name</th>
                 <th>Email</th>
                 <th>Status</th>
                 <th>Action</th>
@@ -36,7 +37,8 @@
             <tbody>
               @foreach ($users as $user)
                 <tr>
-                  <td>{{$user->name}} ({{$user->sort_name}})</td>
+                  <td>{{$user->name}}</td>
+                  <td>{{$user->short_name}}</td>
                   <td>{{$user->email}}</td>
                   <td>
                     @if ($user->isActive())

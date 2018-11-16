@@ -15,9 +15,9 @@
             <div class="col-12 col-md-9"><input type="text" id="text-input" name="name" value="{{old('name')}}" class="form-control"></div>
           </div>
           <div class="row form-group">
-            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Sort from of name</label></div>
+            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Short from of name</label></div>
             <div class="col-12 col-md-9">
-              <input type="text" id="text-input" name="sort_name" value="{{old('sort_name')}}" class="form-control">
+              <input type="text" id="text-input" name="short_name" value="{{old('short_name')}}" class="form-control">
             </div>
           </div>
           <div class="row form-group">

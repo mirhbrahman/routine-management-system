@@ -45,7 +45,7 @@ class TeacherAssignsController extends Controller
     public function create()
     {
           return view('admin.teacherAssign.create')
-          ->with('teachers', User::where('is_teacher', 1)->orderBy('name', 'ASC')->get())
+          ->with('teachers', User::where('is_teacher', 1)->where('is_active', 1)->orderBy('name', 'ASC')->get())
           ->with('courses', Course::orderBy('name', 'ASC')->get());
     }
 
@@ -134,7 +134,7 @@ class TeacherAssignsController extends Controller
     public function destroy(Request $request, TeacherAssign $teacherAssign)
     {
         $teacherAssign->delete();
-        $request->session()->flash('success', 'Teacher assign delete successfull');
+        $request->session()->flash('success', 'Teacher deleted successfully');
         return redirect()->route('teacher-assigns.index');
     }
 }

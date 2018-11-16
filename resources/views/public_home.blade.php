@@ -31,7 +31,7 @@
           <h4 style="text-align:center;">Department of Computer Science & Engineering</h4>
           <p style="text-align:center;font-weight:bold;margin-bottom:0">
             Class Routine –
-            @if ($session->session)
+            @if ($session)
               {{$session->session}}
             @else
               <p>(No session)</p>
@@ -81,7 +81,7 @@
                               @if ($day_id == $r->day_id && $ts->id == $r->time_slot_id)
                                 <div class="" style="color:black; ">
                                   <p style="color:black;font-size:12px;line-height:0px;margin-top: 5px;">S{{$r->semester}}: {{$r->course->code}}</p>
-                                  <p style="color:black;font-size:12px;line-height:0px;">T-{{$r->teacher->sort_name}}, R-{{$r->room->room_no}}</p>
+                                  <p style="color:black;font-size:12px;line-height:0px;">T-{{$r->teacher->short_name}}, R-{{$r->room->room_no}}</p>
                                   <p style="color:black;font-size:12px;line-height:0px;">@if ($r->note)
                                     ( {{$r->note}} )
                                   @endif</p>
@@ -106,7 +106,7 @@
                 <div class="row">
                   @foreach ($teachers as $t)
                     <div class="col-sm-4">
-                      <p style="margin-bottom:0">{{$t->sort_name}} : {{$t->name}}</p>
+                      <p style="margin-bottom:0">{{$t->teacher->short_name}} : {{$t->teacher->name}}</p>
                     </div>
                   @endforeach
                 </div>

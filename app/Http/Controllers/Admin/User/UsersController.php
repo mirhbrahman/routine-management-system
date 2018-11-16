@@ -40,7 +40,7 @@ class UsersController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|min:3|max:50',
-            'sort_name' => 'required|min:1|max:10|unique:users',
+            'short_name' => 'required|min:1|max:10|unique:users',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6|max:30|confirmed',
             'password_confirmation' => 'required',
@@ -48,7 +48,7 @@ class UsersController extends Controller
 
         $user = new User();
         $user->name = $request->name;
-        $user->sort_name = strtoupper($request->sort_name);
+        $user->short_name = strtoupper($request->short_name);
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->is_teacher = $request->is_teacher ? 1 : 0;
@@ -95,12 +95,12 @@ class UsersController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|min:3|max:50',
-            'sort_name' => 'required|min:1|max:10|unique:users,sort_name,' . $user->id,
+            'short_name' => 'required|min:1|max:10|unique:users,short_name,' . $user->id,
             'email' => 'required|email|unique:users,email,'.$user->id,
         ]);
 
         $user->name = $request->name;
-        $user->sort_name = strtoupper($request->sort_name);
+        $user->short_name = strtoupper($request->short_name);
         $user->email = $request->email;
         if($request->password){
             $user->password = bcrypt($request->password);

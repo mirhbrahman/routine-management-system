@@ -56,7 +56,7 @@
                   @foreach ($teachers as $teacher)
                     <option value="{{$teacher->id}}" @if ($teacher->id == $ta->teacher_id)
                       selected
-                    @endif>{{$teacher->name}}-{{$teacher->sort_name}}</option>
+                    @endif>{{$teacher->name}}-{{$teacher->short_name}}</option>
                   @endforeach
                 @endif
               </select>

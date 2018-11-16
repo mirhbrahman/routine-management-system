@@ -6,8 +6,10 @@ use App\User;
 use App\Models\Routine;
 use App\Models\TimeSlot;
 use Illuminate\Http\Request;
+use App\Models\TeacherAssign;
 use App\Http\Controllers\Controller;
 use App\Models\Session as ClassSession;
+use Illuminate\Support\Facades\DB;
 
 class PublicHomeController extends Controller
 {
@@ -16,11 +18,20 @@ class PublicHomeController extends Controller
       $sem = $request->get('semester') ? $request->get('semester') : 0;
 
       $routines = Routine::where('semester', $sem)->get();
+
+      // $users = DB::table('teacher_assigns')
+      //       ->select('id','semester', 'teacher_id')
+      //       ->groupBy('teacher_id')
+      //       ->get();
+
+      //       return $users;
+
       return view('public_home')
         ->with('timeslots', TimeSlot::orderBy('id', 'ASC')->get())
         ->with('routines', $routines)
         ->with('semester', $sem)
         ->with('session', ClassSession::first())
-        ->with('teachers', User::where('is_teacher', 1)->get());
+        ->with('teachers', TeacherAssign::where('semester', $sem)->groupBy('teacher_id')->get());
     }
 }
+

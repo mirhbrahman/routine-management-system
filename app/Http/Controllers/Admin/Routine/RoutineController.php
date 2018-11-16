@@ -87,6 +87,18 @@ class RoutineController extends Controller
           return redirect()->back();
         }
 
+        // Check teacher busy or not
+        $t = Routine::where('day_id', $routine->day_id)
+          ->where('time_slot_id', $routine->time_slot_id)
+          ->where('teacher_id', $routine->teacher_id)
+          ->first();
+
+        // If already assign
+        if ($t) {
+          Session::flash('custom_error', 'Teacher busy');
+          return redirect()->back();
+        }
+
         if ($routine->save()) {
           Session::flash('success', 'Added to routine');
         }

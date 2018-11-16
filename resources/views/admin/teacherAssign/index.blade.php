@@ -40,7 +40,8 @@
               <tr>
                 <th>Semester</th>
                 <th>Course</th>
-                <th>Teacher</th>
+                <th>Teacher Name</th>
+                <th>Teacher Short Name</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -49,7 +50,8 @@
                 <tr>
                   <td>{{$at->semester}}</td>
                   <td>{{$at->course->name}}</td>
-                  <td>{{$at->teacher->name}}({{$at->teacher->sort_name}})</td>
+                  <td>{{$at->teacher->name}}</td>
+                  <td>{{$at->teacher->short_name}}</td>
                   <td>
                     <a class="btn btn-sm btn-outline-primary" href="{{route('teacher-assigns.edit', $at->id)}}"><i class="fa fa-edit"></i>Edit</a>
                     <a class="btn btn-sm btn-outline-danger" href="{{route('teacher-assigns.destroy', $at->id)}}" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fa fa-trash"></i>Delete</a>

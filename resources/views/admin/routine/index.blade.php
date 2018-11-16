@@ -80,7 +80,7 @@
                             @if ($sem == $r->semester && $ts->id == $r->time_slot_id)
                               <div class="" style="color:black; ">
                                 <p style="color:black;font-size:12px;line-height:0px;margin-top: 5px;">{{$r->course->code}}</p>
-                                <p style="color:black;font-size:12px;line-height:0px;">T-{{$r->teacher->sort_name}}, R-{{$r->room->room_no}}</p>
+                                <p style="color:black;font-size:12px;line-height:0px;">T-{{$r->teacher->short_name}}, R-{{$r->room->room_no}}</p>
                                 <p style="color:black;font-size:12px;line-height:0px;">@if ($r->note)
                                   ( {{$r->note}} )
                                 @endif</p>
@@ -96,7 +96,7 @@
                                   data-course="{{$r->course->name}}-{{$r->course->code}} ({{$r->teacher->name}})"
                                   {{-- data-teacher="{{$r->teacher->name}}" --}}
                                   data-room_no="{{$r->room->room_no}}"
-                                  data-note={{$r->note}}
+                                  data-note="{{$r->note}}"
                                   data-routine_id="{{$r->id}}"
                                   style="margin:0px;display:none;padding:0px"
                                   class="editBtn btn btn-primary btn-sm"
