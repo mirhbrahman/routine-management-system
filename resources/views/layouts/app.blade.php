@@ -18,13 +18,23 @@
 
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <style type="text/css">
+    html {
+    height: 100%
+}
+  </style>
 </head>
-<body style="background-color:#242625">
+<body style="background-image: url({{ asset("imgs/gb-big.jpg") }});
+background-repeat: no-repeat;
+background-size: 100% 100%;
+background-color: black;
+
+  {{-- style="background-color:#242625" --}}
   <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light navbar-laravel" style="background:#34a6dc">
+    <nav class="navbar navbar-expand-md navbar-light navbar-laravel" style="background:#34a6dccf">
       <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
-          {{ config('app.name', 'Laravel') }}
+        <a style="color: white" class="navbar-brand" href="{{ url('/') }}">
+          {{ config('app.name', 'DRMS') }}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
           <span class="navbar-toggler-icon"></span>
@@ -37,19 +47,19 @@
           </ul>
 
           <!-- Right Side Of Navbar -->
-          <ul class="navbar-nav ml-auto">
+          <ul class="navbar-nav ml-auto" style="color: white">
             <!-- Authentication Links -->
             @guest
-              <li class="nav-item">
-                <b><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></b>
+              <li class="nav-item" >
+                <b><a style="color: white" class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></b>
               </li>
 
             @else
               <li class="nav-item">
-                <a class="nav-link" href="{{ route('home') }}">{{ __('Dash') }}</a>
+                <a style="color: white" class="nav-link" href="{{ route('home') }}">{{ __('Dash') }}</a>
               </li>
               <li class="nav-item dropdown">
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                <a style="color: white" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                   {{ Auth::user()->name }} <span class="caret"></span>
                 </a>
 
@@ -60,7 +70,7 @@
                   {{ __('Logout') }}
                 </a>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                <form  id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;color: white">
                   @csrf
                 </form>
               </div>

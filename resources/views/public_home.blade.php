@@ -1,13 +1,21 @@
 @extends('layouts.app')
 
+
 @section('content')
-  <div class="col-sm-6 offset-sm-3">
+<div class="col-sm-6 offset-sm-3 text-center" style="color: white;">
+            <img src="{{asset("imgs/gb_logo.png")}}">
+            <h2>Gono Bishwabidyalay</h2>
+            <h3>Dynamic Routine Management System</h3>
+            <br><br>
+          </div>
+  <div class="col-sm-6 offset-sm-3" style="text-align: center;">
+
     <form action="{{route('public.home')}}" method="get" enctype="" class="form-horizontal">
       <div class="row form-group">
         <div class="col col-md-2">
           <h4 style="margin-top:5px;color:#FFFFFF">Semester</h4>
         </div>
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-md-7">
           <select name="semester" id="semester" class="form-control pull-left">
             <option value="">Please Select</option>
             @foreach (semesters() as $sem)
@@ -15,7 +23,7 @@
             @endforeach
           </select>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <input type="submit" value="Search" class="btn btn-primary pull-right">
         </div>
       </div>
@@ -116,8 +124,14 @@
           </div>
         @else
           <div class="col-sm-6 offset-sm-3">
-            <p style="color:gray">Please search by semester to get your routine.</p>
+            <p style="color:black; text-align: center;" >Please search by semester to get your routine.</p>
           </div>
+
+         {{--  <div class="col-sm-6 offset-sm-3 text-center" style="color: white; margin-top: 7%">
+            <img src="{{asset("imgs/gb_logo.png")}}">
+            <h2>Gono Bishwabidyalay</h2>
+            <h3>Dynamic Routine Management System</h3>
+          </div> --}}
         @endif
 
       </div>
