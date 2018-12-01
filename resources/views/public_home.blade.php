@@ -36,7 +36,7 @@
         <div class="card-header">Routine</div>
 
         <div class="card-body">
-          <h4 style="text-align:center;">Department of Computer Science & Engineering</h4>
+          <h4 style="text-align:center;font-weight: bold;">Department of Computer Science & Engineering</h4>
           <p style="text-align:center;font-weight:bold;margin-bottom:0">
             Class Routine –
             @if ($session)

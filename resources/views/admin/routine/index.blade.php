@@ -26,7 +26,7 @@
       <div class="card-header">Routine</div>
 
       <div class="card-body">
-        <h4 style="text-align:center;">Department of Computer Science & Engineering</h4>
+        <h4 style="text-align:center;font-weight: bold">Department of Computer Science & Engineering</h4>
         <p style="text-align:center;font-weight:bold">
           Class Routine –
           @if ($session->session)
@@ -149,7 +149,7 @@
               <div class="row" style="padding:15px;">
                 @foreach ($teachers as $t)
                   <div class=""  style="width:25%;float:left">
-                    <p style="margin-bottom:0">{{$t->teacher->short_name}} : {{$t->teacher->name}}</p>
+                    <p style="margin-bottom:0;color: black">{{$t->teacher->short_name}} : {{$t->teacher->name}}</p>
                   </div>
                 @endforeach
               </div>

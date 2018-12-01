@@ -13,7 +13,7 @@ table {
   @if (count($routines))
   <div class="card">
     <div class="card-body">
-      <h4 style="text-align:center;"><b>Department of Computer Science & Engineering</b></h4>
+      <h4 style="text-align:center;font-weight: bold;"><b>Department of Computer Science & Engineering</b></h4>
       <p style="text-align:center;font-weight:bold;margin-bottom:0">
         Class Routine –
         @if ($session->session)

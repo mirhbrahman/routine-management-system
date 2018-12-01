@@ -11,7 +11,7 @@
 <div class="col-md-12" style="padding:0">
   <div class="card">
     <div class="card-body" id="content">
-      <h4 style="text-align:center;">Department of Computer Science & Engineering</h4>
+      <h4 style="text-align:center;font-weight: bold">Department of Computer Science & Engineering</h4>
       <p style="text-align:center;font-weight:bold">
         Class Routine –
         @if ($session->session)
