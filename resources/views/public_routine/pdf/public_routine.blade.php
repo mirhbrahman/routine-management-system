@@ -88,7 +88,7 @@
             <div class=""  style="width:100%;">
               <div class="row" style="padding:15px;">
                 @foreach ($teachers as $t)
-                  <div class=""  style="width:25%;float:left">
+                  <div class=""  style="width:25%;heigth:30px;float:left;">
                     <p style="margin-bottom:0">{{$t->teacher->short_name}} : {{$t->teacher->name}}</p>
                   </div>
                 @endforeach

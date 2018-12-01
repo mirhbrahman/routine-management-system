@@ -19,13 +19,13 @@ class PDFRoutineController extends Controller
     $sem = $request->get('semester') ? $request->get('semester') : 0;
     $routines = Routine::where('semester', $sem)->get();
 
-    // To preview pdf view uncomment the section
+    //To preview pdf view uncomment the section
     // return view('public_routine.pdf.public_routine')
     //   ->with('timeslots', TimeSlot::orderBy('id', 'ASC')->get())
     //   ->with('routines', $routines)
     //   ->with('semester', $sem)
     //   ->with('session', ClassSession::first())
-    //   ->with('teachers', User::where('is_teacher', 1)->get());
+    //   ->with('teachers', TeacherAssign::where('semester', $sem)->groupBy('teacher_id')->get());
 
 
     $session = ClassSession::first();
