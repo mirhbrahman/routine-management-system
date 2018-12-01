@@ -70,5 +70,34 @@
         </tbody>
       </table>
 
+      <table class="table">
+                    @php
+                    $teachers;
+                    @endphp
+                    <tbody>
+                     @while (count($teachers))
+                     @php
+                     $index = count($teachers)-1;
+                     @endphp
+                     <tr>
+                      <td style="border: none;padding:5px;">{{$teachers[$index]->teacher->short_name}} : {{$teachers[$index]->teacher->name}}</td>
+
+
+                      @if (isset($teachers[$index-1]))
+                      <td style="border: none;padding:5px;">{{$teachers[$index-1]->teacher->short_name}} : {{$teachers[$index-1]->teacher->name}}</td>
+
+                      @endif
+
+                      @php
+                      unset($teachers[$index]);
+                      unset($teachers[$index-1]);
+                      @endphp
+                      
+                    </tr>
+                    @endwhile
+                    
+                  </tbody>
+                </table>
+
     </div>
   @endsection

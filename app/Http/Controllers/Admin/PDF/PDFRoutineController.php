@@ -25,7 +25,8 @@ class PDFRoutineController extends Controller
         //   ->with('rooms', Room::orderBy('id', 'ASC')->get())
         //   ->with('routines', $routines)
         //   ->with('day_id', $day_id)
-        //   ->with('session', ClassSession::first());
+        //   ->with('session', ClassSession::first())
+        //   ->with('teachers', TeacherAssign::groupBy('teacher_id')->get());
 
       $session = ClassSession::first();
       $day = days($day_id);
@@ -36,7 +37,8 @@ class PDFRoutineController extends Controller
           'timeslots' => TimeSlot::orderBy('id', 'ASC')->get(),
           'rooms' => Room::orderBy('id', 'ASC')->get(),
           'day_id' => $day_id,
-          'session' => $session
+          'session' => $session,
+          'teachers' => TeacherAssign::groupBy('teacher_id')->get()
       ];
 
       $pdf = PDF::loadView('admin.pdf.full_routine', $data);
